@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['housingb13.herokuapp.com', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'app.apps.AppConfig',
     'bootstrap5',
     'django.contrib.admin',
     'django.contrib.auth',
