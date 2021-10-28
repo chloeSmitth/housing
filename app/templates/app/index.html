@@ -18,21 +18,34 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'app:filter' %}">Filter</a>
-        <!-- </li>
+        </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">List of Deepthoughts</a>
-        </li> -->
-        <li class="nav-link" style="padding-left: 7.5in;">Username: {{ user.username }}</li>
+          <a class="nav-link" href="{% url 'app:map' %}">Map</a>
+        </li>
       </ul>
+      {% if user.is_authenticated %}
+        <li class="nav-link" style="float: right;">User: {{ user.username }}</li>
+        <a href="logout">Logout</a>
+      {% else %}
+        <a href="{% provider_login_url 'google' %}">
+          <img 
+            src="https://onymos.com/wp-content/uploads/2020/10/google-signin-button-1024x260.png" 
+            height="50"
+          >
+        </a>
+      {% endif %}
     </div>
   </div>
 </nav>
 
-{% if user.is_authenticated %}
-  <p>Welcome, You are logged in as {{ user.username }}</p>
-  <a href="logout/">Log out</a>
-{% else %}
-  <a href="{% provider_login_url 'google' %}"><img src="https://onymos.com/wp-content/uploads/2020/10/google-signin-button-1024x260.png" width="250"></a>
-{% endif %}
+<div class="fixed-bottom">
+  <footer class="text-center bg-light">
+    <div class="text-center p-4" style="font-size: 14; background-color: rgba(0, 0, 0, 0.05);">
+      © 2021 Copyright: Students in project b-13 in CS 3240: Advanced Software Development Techniques. 
+      University of Virginia.
+    </div>
+  </footer>
+</div>
+
 </body>
 </html>

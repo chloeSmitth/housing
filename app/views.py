@@ -12,3 +12,6 @@ class IndexView(generic.TemplateView):
 
 class FilterView(generic.TemplateView):
     template_name = 'app/filter.html'
+
+class MapView(generic.TemplateView):
+    template_name = 'app/map.html'

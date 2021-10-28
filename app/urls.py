@@ -7,4 +7,5 @@ urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     path('logout/', LogoutView.as_view()),
     path('filter/', views.FilterView.as_view(), name='filter'),
+    path('map/', views.MapView.as_view(), name='map'),
 ]
