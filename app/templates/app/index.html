@@ -10,18 +10,19 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="" style="color:#FF8C00">UVA Off-Grounds Housing</a>
+    <a class="navbar-brand" href="/app" style="color:#FF8C00">UVA Off-Grounds Housing</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="/app">Home</a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="#">Deepthoughts</a>
-        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'app:filter' %}">Filter</a>
+        <!-- </li>
         <li class="nav-item">
           <a class="nav-link" href="#">List of Deepthoughts</a>
         </li> -->
+        <li class="nav-link" style="padding-left: 7.5in;">Username: {{ user.username }}</li>
       </ul>
     </div>
   </div>
@@ -29,6 +30,7 @@
 
 {% if user.is_authenticated %}
   <p>Welcome, You are logged in as {{ user.username }}</p>
+  <a href="logout/">Log out</a>
 {% else %}
   <a href="{% provider_login_url 'google' %}"><img src="https://onymos.com/wp-content/uploads/2020/10/google-signin-button-1024x260.png" width="250"></a>
 {% endif %}
