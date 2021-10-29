@@ -6,12 +6,19 @@ from django.utils import timezone
 
 from .models import Amenitie, Housing, Style
 
-# Create your views here.
+# Home Page
 class IndexView(generic.TemplateView):
     template_name = 'app/index.html'
 
+# Filtering
 class FilterView(generic.TemplateView):
     template_name = 'app/filter.html'
 
+class FilterResultView(generic.TemplateView):
+    template_name = 'app/filter_results.html'
+
 class MapView(generic.TemplateView):
     template_name = 'app/map.html'
+
+class AboutView(generic.TemplateView):
+    template_name = 'app/about.html'
