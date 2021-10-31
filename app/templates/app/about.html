@@ -1,0 +1,60 @@
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+{% load socialaccount %}
+<html>
+<body>
+<!-- <h1>My Google OAuth Project </h1> -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/app" style="color:#FF8C00">UVA Off-Grounds Housing</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/app">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'app:filter' %}">Filter</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'app:map' %}">Map</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'app:about' %}">About</a>
+            </li>
+        </ul>
+        {% if user.is_authenticated %}
+            <li class="nav-link" style="float: right;">User: {{ user.username }}</li>
+            <a href="logout">Logout</a>
+        {% else %}
+            <a href="{% provider_login_url 'google' %}">
+            <img 
+                src="https://onymos.com/wp-content/uploads/2020/10/google-signin-button-1024x260.png" 
+                height="50"
+            >
+            </a>
+        {% endif %}
+        </div>
+    </div>
+</nav>
+
+<h1>This is the About page!</h1>
+<p>We are undergraduate students from the University of Virginia, and this is our web application 
+    project for CS 3240: Advanced Software Development Techniques. This is an off-Grounds housing 
+    app that allows user to search, filter, and find their ideal homes at UVA.
+</p>
+
+<div class="fixed-bottom">
+    <footer class="text-center bg-light">
+        <div class="text-center p-4" style="font-size: 14; background-color: rgba(0, 0, 0, 0.05);">
+        © 2021 Copyright: Students in project b-13 in CS 3240: Advanced Software Development Techniques. 
+        University of Virginia.
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>
