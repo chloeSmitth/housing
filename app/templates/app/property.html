@@ -29,7 +29,7 @@
         </ul>
         {% if user.is_authenticated %}
             <li class="nav-link" style="float: right;">User: {{ user.username }}</li>
-            <a href="logout">Logout</a>
+            <a href="{% url 'app:logout' %}">Logout</a>
         {% else %}
             <a href="{% provider_login_url 'google' %}">
             <img 
@@ -42,7 +42,17 @@
     </div>
 </nav>
 
-<h1>{{property.name}}</h1>
+<center><h1 style="color: blueviolet;">{{property.name}}</h1></center>
+
+<ul class="list-group" style="padding: 2ch;">
+    <li class="list-group-item">Type: {{property.housing_type}}</li>
+    <li class="list-group-item">Addrress: {{property.address}}</li>
+    <!-- <li class="list-group-item">Morbi leo risus</li>
+    <li class="list-group-item">Porta ac consectetur ac</li>
+    <li class="list-group-item">Vestibulum at eros</li> -->
+</ul>
+
+<p>Located on {{property.address}}, this {{property.type}} has this many rooms and this many beds.</p>
 
 <!-- https://getbootstrap.com/docs/4.0/components/forms/ -->
 
