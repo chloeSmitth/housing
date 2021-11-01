@@ -1,5 +1,5 @@
 from django.db.models.expressions import OrderBy
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
@@ -16,7 +16,7 @@ class IndexView(generic.TemplateView):
 def FilterView(request):
     #template_name = 'app/filter.html'
     
-    style = Style.objects.all()
+    style = Style.objects.all().order_by('name')
     names = Style.objects.values_list('name', flat=True)
 
     houses = Housing.objects.filter(name=names)
@@ -28,6 +28,13 @@ def FilterView(request):
 
     return render(request, 'app/filter.html', context)
 
+def PropertyView(request, name):
+    property = Housing.objects.get(name=name)
+    context = {'property':property}
+    return render(request, 'app/property.html', context)
+
+
+    
 
 class FilterResultView(generic.TemplateView):
     template_name = 'app/filter_results.html'

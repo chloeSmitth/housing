@@ -1,3 +1,4 @@
+
 {% load bootstrap5 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
@@ -41,7 +42,7 @@
     </div>
 </nav>
 
-<h1>This is the filter page!</h1>
+<h1>{{property.name}}</h1>
 
 <!-- https://getbootstrap.com/docs/4.0/components/forms/ -->
 
@@ -55,56 +56,6 @@
   </footer>
 </div>
 
-<br>
-
-<br>
-<div class="row">
-	<div class="col">
-		<div class="card card-body">
-
-			<form method="get">
-				{{myFilter.form}}
-
-		    <button class="btn btn-primary" type="submit">Search</button>
-		  </form>
-
-		</div>
-	</div>
-	
-</div>
-<br>
-
-<div class="row">
-	<div class="col-md">
-		<div class="card card-body">
-			<table class="table table-sm">
-				<tr>
-					<th>Name</th>
-					<th>Details</th>
-                    <th>Bedrooms</th>
-					<th>Bathrooms</th>
-					<th>People</th>
-                    <th>Rent</th>
-				</tr>
-
-				{% for x in styles %}
-
-				<tr>
-					<td>{{x.name}}</td>
-                    <td><a class="btn btn-sm btn-info" href="{% url 'app:property' x.name %}">Details</a></td>
-                    <td>{{x.beds}}</td>
-                    <td>{{x.baths}}</td>
-                    <td>{{x.people}}</td>
-                    <td>{{x.rent}}</td>
-
-					
-				</tr>
-				{% endfor %}
-
-			</table>
-		</div>
-	</div>
-</div>
 
 
 </body>
