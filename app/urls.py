@@ -8,7 +8,8 @@ urlpatterns = [
     path('logout/', LogoutView.as_view()),
 
     #Filter paths
-    path('filter/', views.FilterView.as_view(), name='filter'),
+    path('filter/', views.FilterView, name='filter'),
+    path('filter/<str:name>', views.PropertyView, name='property'),
     path('filter_result/', views.FilterResultView.as_view(), name='filter_result'),
 
     #Map paths

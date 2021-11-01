@@ -44,45 +44,7 @@
 <h1>This is the filter page!</h1>
 
 <!-- https://getbootstrap.com/docs/4.0/components/forms/ -->
-<div style="padding: 0.5in;">
-    <form class="d-flex" method="post" action="{% url 'app:filter_result' %}">
-        {% csrf_token %}
-    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-        <option selected>Choose Building Type...</option>
-        <option value = "1">House</option>
-        <option value = "2">Apartment</option>
-        <option value = "3">Town House</option>
-    </select>
-    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-        <option selected>Choose Number of People...</option>
-        <option value = "1">1</option>
-        <option value = "2">2</option>
-        <option value = "3">3</option>
-        <option value = "4">4</option>
-        <option value = "5">5</option>
-        <option value = "6">6</option>
-        <option value = "7">7</option>
-        <option value = "8">8</option>
-        <option value = "9">9</option>
-        <option value = "10">10</option>
-        <option value = "11">11</option>
-        <option value = "12">12</option>
-        <option value = "13">More than 12</option>
-    </select>
-    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-        <option selected>Choose Number of Bedrooms...</option>
-        <option value = "1">1</option>
-        <option value = "2">2</option>
-        <option value = "3">3</option>
-        <option value = "4">4</option>
-        <option value = "5">5</option>
-        <option value = "6">6</option>
-        <option value = "7">More than 6</option>
-    </select>
-    <!-- https://getbootstrap.com/docs/4.0/components/buttons/ -->
-    <button type="button" class="btn btn-success" type="sumbit">Filter</button>
-</form>
-</div>
+
 
 <div class="fixed-bottom">
   <footer class="text-center bg-light">
@@ -92,6 +54,58 @@
     </div>
   </footer>
 </div>
+
+<br>
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+
+			<form method="get">
+				{{myFilter.form}}
+
+		    <button class="btn btn-primary" type="submit">Search</button>
+		  </form>
+
+		</div>
+	</div>
+	
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Name</th>
+					<th>Details</th>
+                    <th>Bedrooms</th>
+					<th>Bathrooms</th>
+					<th>People</th>
+                    <th>Rent</th>
+				</tr>
+
+				{% for x in styles %}
+
+				<tr>
+					<td>{{x.name}}</td>
+                    <td><a class="btn btn-sm btn-info" href="{% url 'app:property' x.name %}">Details</a></td>
+                    <td>{{x.beds}}</td>
+                    <td>{{x.baths}}</td>
+                    <td>{{x.people}}</td>
+                    <td>{{x.rent}}</td>
+
+					
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
 
 </body>
 </html>
