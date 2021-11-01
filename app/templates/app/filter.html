@@ -28,7 +28,7 @@
         </ul>
         {% if user.is_authenticated %}
             <li class="nav-link" style="float: right;">User: {{ user.username }}</li>
-            <a href="logout">Logout</a>
+            <a href="{% url 'app:logout' %}">Logout</a>
         {% else %}
             <a href="{% provider_login_url 'google' %}">
             <img 
@@ -40,8 +40,6 @@
         </div>
     </div>
 </nav>
-
-<h1>This is the filter page!</h1>
 
 <!-- https://getbootstrap.com/docs/4.0/components/forms/ -->
 
@@ -61,8 +59,14 @@
 <div class="row">
 	<div class="col">
 		<div class="card card-body">
-
+            
 			<form method="get">
+                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                    <option selected>Choose Building Type...</option>
+                    <option value = "1">House</option>
+                    <option value = "2">Apartment</option>
+                    <option value = "3">Town House</option>
+                </select>
 				{{myFilter.form}}
 
 		    <button class="btn btn-primary" type="submit">Search</button>
@@ -79,8 +83,8 @@
 		<div class="card card-body">
 			<table class="table table-sm">
 				<tr>
-					<th>Name</th>
-					<th>Details</th>
+					<th>Housing</th>
+					<!-- <th>Details</th> -->
                     <th>Bedrooms</th>
 					<th>Bathrooms</th>
 					<th>People</th>
@@ -90,8 +94,9 @@
 				{% for x in styles %}
 
 				<tr>
-					<td>{{x.name}}</td>
-                    <td><a class="btn btn-sm btn-info" href="{% url 'app:property' x.name %}">Details</a></td>
+					<td><a class="btn btn-success" href="{% url 'app:property' x.name %}">
+                    {{x.name}}</a></td>
+                    <!-- <td>Details</a></td> -->
                     <td>{{x.beds}}</td>
                     <td>{{x.baths}}</td>
                     <td>{{x.people}}</td>

@@ -30,6 +30,7 @@ def FilterView(request):
 
 def PropertyView(request, name):
     property = Housing.objects.get(name=name)
+    # ss = Style.objects.get(name=name)
     context = {'property':property}
     return render(request, 'app/property.html', context)
 
