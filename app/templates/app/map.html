@@ -5,6 +5,11 @@
 {% load static %}
 {% load socialaccount %}
 <html>
+<head>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+</head>
+
 <body>
 <!-- <h1>My Google OAuth Project </h1> -->
 
@@ -42,6 +47,18 @@
 </nav>
 
 <h1>This is the map page!</h1>
+
+<div id='map' style='width: 1000px; height: 600px;' ></div>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY2hsb2VzbWl0aCIsImEiOiJja3ZqdmllenhiaDRuMzBwaDdhYmVvZWYwIn0.oce3pmyBPrM5Obb2xYToyg';
+    var map = new mapboxgl.Map({
+    container: 'map',
+    zoom: 14,
+    center: [-78.5, 38.04],
+    style: 'mapbox://styles/mapbox/streets-v11',
+    });
+    map.MercatorCoordinate(0.5, 0.5, 0);
+</script>
 
 <div class="fixed-bottom">
     <footer class="text-center bg-light">
